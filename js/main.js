@@ -42,19 +42,46 @@ function removeScript(scriptId) {
     }
 }
 
+class HeaderPageSection
+{
+    view()
+    {
+        return m("header.container-fluid", [
+            m("div.row", [
+                m("article.col-2", [
+                    m("a.nav-link", {"href": "#"}, "Logomarca"),
+                ]),
+                m("article.col-10", [
+                    m("nav.nav.nav-pills", [
+                        m("a.nav-link", {'href' : "#"}, "Início"),
+                        m("a.nav-link", {'href' : "#"}, "Início"),
+                        m("a.nav-link", {'href' : "#"}, "Início"),
+                        m("a.nav-link", {'href' : "#"}, "Início"),
+                    ])
+                ])
+            ])
+        ])
+    }
+}
 
 
-var Hello = {
-    oninit: function(vnode) {
+class Application
+{
+    oninit(vnode)
+    {
         console.log("Antes de Inicializar")
-    },
-    onupdate: function() {
+    }
+
+    onupdate()
+    {
 		console.log("Redesenhando na tela")
-	},
-    view: function() {
+	}
+
+    view()
+    {
         console.log("Renderizando na tela")
         return m("main", [
-            m("header.container-fluid", []),
+            m(HeaderPageSection),
             m("article.container-fluid", [
                 m("h1", {class: "title"}, "My first app"),
                 m("button", "A button"),
@@ -63,8 +90,10 @@ var Hello = {
             ]),
             m("footer.container-fluid", [])
         ])
-    },
-    oncreate: function(vnode) {
+    }
+
+    oncreate(vnode)
+    {
         console.log("Criado e renderizado")
         createScript('country', 'js/country.js');
         createScript('address', 'js/address.js');

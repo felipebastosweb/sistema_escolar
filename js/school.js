@@ -82,7 +82,7 @@ class SchoolList {
   {
     return m('div', [
       m('h2', 'Lista de Escolas'),
-      m('button', { onclick: () => m.route.set('/new') }, 'Nova Escola'),
+      m('button.btn.btn-primary', { onclick: () => m.route.set('/new') }, 'Nova Escola'),
       m('ul',
         schoolStore.map(s => m('li', [
           `${s.nome} (${s.codigoINEP})`,
@@ -116,10 +116,3 @@ class SchoolView {
     ]);
   }
 }
-
-m.route(document.getElementById('SchoolScreen'), '/schools/index', {
-  '/schools/index': SchoolList,
-  '/schools/new': SchoolForm,
-  '/schools/edit': SchoolForm,
-  '/schools/view': SchoolView
-});
